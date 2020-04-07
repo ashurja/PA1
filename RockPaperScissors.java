@@ -28,7 +28,7 @@ public class RockPaperScissors {
     Counter cpuWin;                 // Number of times cpu wins
     Counter tie;                    // Number of ties
 
-
+    String[] n_systemMoves;
     // Used to calculate percentages
     private static final int PERCENT = 100;
 
@@ -75,7 +75,8 @@ public class RockPaperScissors {
 	this.tie = new Counter();	
 	this.userMoves = new ArrayList<String>(); 
 	this.initialCapacity = 5; 
-	this.systemMoves = new String[this.initialCapacity]; 
+	this.systemMoves = new String[this.initialCapacity];
+	this.n_systemMoves = new String[this.initialCapacity]; 	
     }
 
     /**
@@ -87,24 +88,9 @@ public class RockPaperScissors {
         //TODO
 	Random rand = new Random(); 
 	String[] Moves = new String[]{ROCK,PAPER,SCISSORS};
-	int user_size = 0; 
-	if (user_size == 0) {
-		user_size++;
-		return ROCK; 
-	}
-	else if (user_size == 1){
-		user_size++; 
-		return PAPER;
-	}
-	else if (user_size == 2) {
-		user_size++; 
-		return SCISSORS;
-	}
-	else {
-		int rand_int = rand.nextInt(3); 
-		String rand_move = Moves[rand_int]; 
-		return rand_move; 
-	}
+	int rand_int = rand.nextInt(3); 
+	String rand_move = Moves[rand_int]; 
+	return rand_move; 
     }
 
     /**
@@ -115,10 +101,15 @@ public class RockPaperScissors {
     public void expandCapacity() {
         // TODO
 	this.initialCapacity = this.systemMoves.length; 
-	String[] systemMoves = new String[this.initialCapacity * 2];
+	this.n_systemMoves = new String[this.initialCapacity * 2];
 	for (int i = 0; i < this.initialCapacity; i++) {
-		systemMoves[i] = this.systemMoves[i];
+		this.n_systemMoves[i] = this.systemMoves[i];
 	}
+	this.systemMoves = new String[this.initialCapacity * 2];
+	for (int i = 0; i < this.initialCapacity; i++) {
+		this.systemMoves[i] = this.n_systemMoves[i];
+	}
+
     }
 
     /**
@@ -130,12 +121,12 @@ public class RockPaperScissors {
     public void addSystemMove(String sysMove) {
 	if (this.size == this.initialCapacity) {
 	       	expandCapacity();
-		this.systemMoves[size] = sysMove; 
-		size++; 
+		this.systemMoves[this.size] = sysMove; 
+		this.size++; 
 	}
 	else {
-		this.systemMoves[size] = sysMove; 
-		size++;
+		this.systemMoves[this.size] = sysMove; 
+		this.size++;
 	}
 	
     }
