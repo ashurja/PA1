@@ -143,6 +143,7 @@ public class RockPaperScissors {
         // TODO : write code for the game
 	if (playerMove.equals("q")) {
 		end();
+		System.exit(0);
 	}
 	else if (!(playerMove.equals(ROCK)) && !(playerMove.equals(PAPER)) && !(playerMove.equals(SCISSORS))){
 		System.out.println(INVALID_INPUT); 
