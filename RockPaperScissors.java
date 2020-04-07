@@ -68,9 +68,14 @@ public class RockPaperScissors {
      */
     public RockPaperScissors() {
         // TODO
-	userMoves = new ArrayList<String>(); 
-	initialCapacity = 5; 
-	systemMoves = new String[this.initialCapacity]; 
+	this.playing = true;
+	this.totalGames = new Counter();
+        this.playerWin = new Counter();
+	this.cpuWin = new Counter();
+	this.tie = new Counter();	
+	this.userMoves = new ArrayList<String>(); 
+	this.initialCapacity = 5; 
+	this.systemMoves = new String[this.initialCapacity]; 
     }
 
     /**
