@@ -100,13 +100,13 @@ public class RockPaperScissors {
      */
     public void expandCapacity() {
         // TODO
-	this.initialCapacity = this.systemMoves.length; 
-	this.n_systemMoves = new String[this.initialCapacity * 2];
-	for (int i = 0; i < this.initialCapacity; i++) {
+	this.initialCapacity = this.initialCapacity * 2; 
+	this.n_systemMoves = new String[this.initialCapacity];
+	for (int i = 0; i < this.initialCapacity / 2; i++) {
 		this.n_systemMoves[i] = this.systemMoves[i];
 	}
-	this.systemMoves = new String[this.initialCapacity * 2];
-	for (int i = 0; i < this.initialCapacity; i++) {
+	this.systemMoves = new String[this.initialCapacity];
+	for (int i = 0; i < this.initialCapacity / 2; i++) {
 		this.systemMoves[i] = this.n_systemMoves[i];
 	}
 
